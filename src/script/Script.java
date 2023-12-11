@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Script {
 
     private static final List<String> cons = Arrays.asList("p","t","k","f","s","h","c","m","n","w","r","y");
@@ -28,28 +31,30 @@ public class Script {
     /*
      * input s given in romanization, with ch replaced by t or ts depending on etymology
      */
-    private static String[] parseString(String s) {
+    private static String[] getSyllables(String s) {
         s = s.replaceAll("ts", "c"); // make one character for easier parsing
+        s = s.replaceAll("(n[aeiou])", "_$1"); // noting all syllables with n onsets
 
-        ArrayList<String> sb = new ArrayList<String>(); // string builder
+        ArrayList<String> f = new ArrayList<String>(); // final return list
 
-        String current = "";
+        String vowel = "[aeiou]";
+        String consonant = "[ptkfshcmnwry]";
 
-        // TODO use regex and not this parsing algorithm
+        String pattern = "(^|" + vowel + "n?)_?(" + consonant + "?" + vowel + "n?)";
+        Pattern p = Pattern.compile(pattern); // nC | C | /0
+        Matcher m;
 
-        int len = s.length();
-        for (int i = 0; i < len; i++) {
-            String c = s.charAt(i) + "";
-            if (cons.contains(c) || vows.contains(c)) { // valid character
-                current += c;
+        while (true) {
+            m = p.matcher(s);
+            if (!m.lookingAt()) break; // no more syllables to find
 
-                if (vows.contains(c) && (i < len - 2 ? !s.substring(i + 1, i + 3).contains(vows) : true)) { // end of syllable
+            String syllable = m.group(2);
+            f.add(syllable.replaceAll("c", "ts")); // add to the list of syllables
 
-                }
-            } else {
-                return null;
-            }
+            s = s.replaceFirst(syllable, "");
         }
+
+        return f.toArray(new String[]{}); // return as string[] array
     }
 
     private static boolean endOfSyllable(String overall, int index) {

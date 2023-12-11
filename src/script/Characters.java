@@ -21,6 +21,7 @@ public class Characters {
     private BufferedImage Y;
 
     public Characters() throws IOException {
+        // TODO make actual file paths
         P = ImageIO.read(new File("path-to-file"));
         T = ImageIO.read(new File("path-to-file"));
         K = ImageIO.read(new File("path-to-file"));
@@ -33,5 +34,23 @@ public class Characters {
         W = ImageIO.read(new File("path-to-file"));
         R = ImageIO.read(new File("path-to-file"));
         Y = ImageIO.read(new File("path-to-file"));
+    }
+
+    public BufferedImage getCharacter(String c) {
+        return switch (c) {
+            case "p" -> P;
+            case "t" -> T;
+            case "k" -> K;
+            case "f" -> F;
+            case "s" -> S;
+            case "h" -> H;
+            case "ts" -> TS;
+            case "m" -> M;
+            case "n" -> N;
+            case "w" -> W;
+            case "r" -> R;
+            case "y" -> Y;
+            default -> null;
+        };
     }
 }

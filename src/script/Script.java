@@ -1,31 +1,48 @@
 package script;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Objects;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Script {
-
-    private static final List<String> cons = Arrays.asList("p","t","k","f","s","h","c","m","n","w","r","y");
-    private static final List<String> vows = Arrays.asList("a","i","u","e","o");
-
+    private static final String vowel = "[aeiou]";
+    private static final String consonant = "[ptkfshcmnwry]";
 
     public Script() {
 
     }
-    public static BufferedImage[] getScript(String s) {
 
+    public static BufferedImage[] getScript(String s, Characters c) {
+        String[] syllables = getSyllables(s);
 
-        BufferedImage[] b;
+        BufferedImage[] b = new BufferedImage[syllables.length];
 
+        Pattern p = Pattern.compile("(" + consonant + "?)(" + vowel + ")(n?)");
+        Matcher m;
 
+        for (int i = 0; i < syllables.length; i++) {
+            String syllable = syllables[i];
+
+            m = p.matcher(syllable);
+            if (!m.find()) throw new Error("Invalid syllable: " + syllable);
+
+            String onset = m.group(1).replaceAll("c", "ts");
+            // String vow = m.group(2); // the vowel in the syllable
+            String coda = m.group(3);
+
+            BufferedImage onsetImage = c.getCharacter(onset);
+
+            if (!Objects.equals(coda, "")) { // if coda exists
+                // add n diacritic to onset character
+            }
+
+            b[i] = onsetImage;
+        }
+
+        return b;
     }
 
     /*
@@ -37,11 +54,8 @@ public class Script {
 
         ArrayList<String> f = new ArrayList<String>(); // final return list
 
-        String vowel = "[aeiou]";
-        String consonant = "[ptkfshcmnwry]";
-
         String pattern = "(^|" + vowel + "n?)_?(" + consonant + "?" + vowel + "n?)";
-        Pattern p = Pattern.compile(pattern); // nC | C | /0
+        Pattern p = Pattern.compile(pattern);
         Matcher m;
 
         while (true) {
@@ -49,17 +63,11 @@ public class Script {
             if (!m.lookingAt()) break; // no more syllables to find
 
             String syllable = m.group(2);
-            f.add(syllable.replaceAll("c", "ts")); // add to the list of syllables
+            f.add(syllable); // add to the list of syllables
 
             s = s.replaceFirst(syllable, "");
         }
 
         return f.toArray(new String[]{}); // return as string[] array
-    }
-
-    private static boolean endOfSyllable(String overall, int index) {
-
-        // it's a vowel followed by <2 consonants
-        // it's 'n' followed by a consonant
     }
 }

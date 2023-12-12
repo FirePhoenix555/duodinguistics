@@ -26,20 +26,16 @@ public class Script {
         for (int i = 0; i < syllables.length; i++) {
             String syllable = syllables[i];
 
-            m = p.matcher(syllable);
-            if (!m.find()) throw new Error("Invalid syllable: " + syllable);
+//            m = p.matcher(syllable);
+//            if (!m.find()) throw new Error("Invalid syllable: " + syllable);
 
-            String onset = m.group(1).replaceAll("c", "ts");
-            // String vow = m.group(2); // the vowel in the syllable
-            String coda = m.group(3);
+//            String onset = m.group(1);
+//            String vow = m.group(2); // the vowel in the syllable
+//            String coda = m.group(3);
 
-            BufferedImage onsetImage = c.getCharacter(onset);
+            BufferedImage img = c.getCharacter(syllable);
 
-            if (!Objects.equals(coda, "")) { // if coda exists
-                // add n diacritic to onset character
-            }
-
-            b[i] = onsetImage;
+            b[i] = img;
         }
 
         return b;

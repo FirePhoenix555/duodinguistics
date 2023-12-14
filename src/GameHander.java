@@ -17,5 +17,14 @@ public class GameHander extends JPanel implements Runnable{
         setPreferredSize(new Dimension(width, height));
         //addKeyListener(kh);
         setFocusable(true);
+
+        initialize();
+
+        gameThread = new Thread(this); //apparently for looping
+		gameThread.start();//I dont know what's going on
      }
+
+    public void initialize() {
+		this.setBackground(Color.black);
+	}
 }

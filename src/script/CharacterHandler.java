@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Characters {
+public class CharacterHandler {
 
     private BufferedImage P;
     private BufferedImage T;
@@ -21,7 +21,7 @@ public class Characters {
     private BufferedImage R;
     private BufferedImage Y;
 
-    public Characters() throws IOException {
+    public CharacterHandler() throws IOException {
         // TODO make actual file paths
         P = ImageIO.read(new File("path-to-file"));
         T = ImageIO.read(new File("path-to-file"));
@@ -82,6 +82,8 @@ public class Characters {
         }
 
         g.dispose();
+
+        // todo trim excess whitespace off?
 
         return character;
     }

@@ -15,7 +15,7 @@ public class Script {
 
     }
 
-    public static BufferedImage[] getScript(String s, Characters c) {
+    public static BufferedImage[] getScript(String s, CharacterHandler c) {
         String[] syllables = getSyllables(s);
 
         BufferedImage[] b = new BufferedImage[syllables.length];

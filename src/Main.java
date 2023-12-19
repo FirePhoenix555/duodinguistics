@@ -13,6 +13,6 @@ public class Main {
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setLocationRelativeTo(null);
-		window.setResizable(true);
+		window.setResizable(false);
     }
 }

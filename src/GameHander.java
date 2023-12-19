@@ -24,6 +24,8 @@ public class GameHander extends JPanel implements Runnable{
      * SoundManager sm = new SoundManager();
      */
 
+    Font font;
+
      public GameHander(){
         setPreferredSize(new Dimension(width, height));
         //addKeyListener(kh);
@@ -37,6 +39,13 @@ public class GameHander extends JPanel implements Runnable{
 
     public void initialize() {
 		this.setBackground(Color.black);
+
+        try {
+            font = FontLoader.loadFont("./assets/fonts/Dogtown Typewriter.ttf");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 	}//initialize
 
     @Override
@@ -66,14 +75,10 @@ public class GameHander extends JPanel implements Runnable{
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
-        String fontPath = "./assets/fonts/Dogtown Typewriter.ttf";
-        
-        try {
-			Font font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(fontPath)).deriveFont(14f);
-	        g.setFont(font);
-        } catch (Exception e) {
-        	e.printStackTrace();
+
+        if (font != null) {
+            Font f = font.deriveFont(14f);
+            g.setFont(f);
         }
         
         g.setColor(Color.white);

@@ -55,6 +55,14 @@ public class CharacterHandler {
         };
     }
 
+    private BufferedImage getVowelDiacritic(char v) {
+        return null;
+    }
+
+    private BufferedImage getNDiacritic() {
+        return null;
+    }
+
     /*
      * Input syllable has all instances of ts replaced with c
      */
@@ -77,7 +85,7 @@ public class CharacterHandler {
         g.drawImage(vowel, 0, 0, null);
 
         if (!syllable.isEmpty()) { // remaining coda /n/
-            BufferedImage n = getN();
+            BufferedImage n = getNDiacritic();
             g.drawImage(n, 0, 0, null);
         }
 

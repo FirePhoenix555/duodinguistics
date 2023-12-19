@@ -14,7 +14,7 @@ public class Word {
     private String meaningGuess = "";
     private boolean confirmed = false;
 
-    public Word(String romanization, String meaning, CharacterHandler c) {
+    protected Word(String romanization, String meaning, CharacterHandler c) {
         this.romanization = romanization;
         this.meaning = meaning;
         this.spelling = Script.getScript(romanization, c);
@@ -32,7 +32,7 @@ public class Word {
         return romanization;
     }
 
-    public void setGuess(String guess) {
+    protected void setGuess(String guess) {
         meaningGuess = guess;
     }
 
@@ -40,7 +40,7 @@ public class Word {
         return meaningGuess;
     }
 
-    public void confirm() {
+    protected void confirm() {
         confirmed = true;
     }
 

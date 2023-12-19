@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 
@@ -26,5 +27,14 @@ public class GameHander extends JPanel implements Runnable{
 
     public void initialize() {
 		this.setBackground(Color.black);
-	}
+	}//initialize
+
+    @Override
+    public void run(){
+        //will add stuff probably perchance
+    }
+
+    private void update(){
+        //may add stuff perchance
+    }
 }

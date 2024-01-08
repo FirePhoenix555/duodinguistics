@@ -1,5 +1,9 @@
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,7 +11,16 @@ public class Main {
         JFrame window = new JFrame("Game");
 		
 		GameHander gh = new GameHander();
-		window.add(gh);
+		//window.add(gh);
+		
+		//panel
+		JPanel p = new JPanel(new BorderLayout());
+		
+		//text input
+		JTextField t = new JTextField("", 16);
+		p.add(t, BorderLayout.SOUTH);
+		p.add(gh);
+		window.add(p);
 		
 		window.pack();
 		window.setVisible(true);

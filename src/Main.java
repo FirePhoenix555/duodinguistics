@@ -9,15 +9,16 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, world!");
         JFrame window = new JFrame("Game");
-		
-		GameHander gh = new GameHander();
-		//window.add(gh);
-		
+
 		//panel
 		JPanel p = new JPanel(new BorderLayout());
-		
+
 		//text input
 		JTextField t = new JTextField("", 16);
+		
+		GameHander gh = new GameHander(t);
+		//window.add(gh);
+
 		p.add(t, BorderLayout.SOUTH);
 		p.add(gh);
 		window.add(p);

@@ -1,15 +1,10 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.Graphics;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 
 public class GameHander extends JPanel implements Runnable{
@@ -17,7 +12,9 @@ public class GameHander extends JPanel implements Runnable{
     final int width = 800, height = 450; //may change later
 	final int fps = 30; // how often the game updates
 
-     Thread gameThread;
+    Thread gameThread;
+
+    private JTextField t;
 
     /* 
      * KeyHandler kh = new KeyHandler();
@@ -26,16 +23,18 @@ public class GameHander extends JPanel implements Runnable{
 
     Font font;
 
-     public GameHander(){
+    public GameHander(JTextField t_){
         setPreferredSize(new Dimension(width, height));
         //addKeyListener(kh);
         setFocusable(true);
 
+        t = t_;
+
         initialize();
 
         gameThread = new Thread(this); //apparently for looping
-		gameThread.start();//I dont know what's going on
-     }
+        gameThread.start();//I dont know what's going on
+    }
 
     public void initialize() {
 		this.setBackground(Color.black);
@@ -46,6 +45,13 @@ public class GameHander extends JPanel implements Runnable{
             e.printStackTrace();
         }
 
+        // setting style for text field
+        t.setFont(font.deriveFont(16f));
+        t.setBackground(Color.DARK_GRAY);
+        t.setForeground(Color.WHITE);
+        t.setCaretColor(Color.WHITE);
+        t.setBorder(new LineBorder(Color.DARK_GRAY,5));
+        t.setPreferredSize(new Dimension(width,height / 13));
 	}//initialize
 
     @Override

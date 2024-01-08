@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -52,6 +54,18 @@ public class GameHander extends JPanel implements Runnable{
         t.setCaretColor(Color.WHITE);
         t.setBorder(new LineBorder(Color.DARK_GRAY,5));
         t.setPreferredSize(new Dimension(width,height / 13));
+        
+        t.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyPressed(KeyEvent e) {
+        		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+        			String placeholder = t.getText();
+        			System.out.println(placeholder);
+        			t.setText("");
+        		} //if statement
+        	} //keyPressed
+        }); //addKeyListener
+        
 	}//initialize
 
     @Override

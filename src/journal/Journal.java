@@ -1,5 +1,6 @@
 package journal;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Journal {
@@ -16,9 +17,13 @@ public class Journal {
         Word w = dict.getWord(word);
         words.add(w);
     }
+    
+    public Word getWord(String word) {
+        return dict.getWord(word);
+    }
 
     public boolean confirmWord(String word) {
-        Word w = dict.getWord(word);
+        Word w = getWord(word);
         if (!words.contains(w)) return false;
         if (w.getGuess().equals(w.getMeaning())) {
             w.confirm();
@@ -28,13 +33,27 @@ public class Journal {
     }
 
     public void setGuess(String word, String guess) {
-        dict.getWord(word).setGuess(guess);
+        getWord(word).setGuess(guess);
     }
 
     public String getGuess(String word) {
-        return dict.getWord(word).getGuess();
+        return getWord(word).getGuess();
     }
-
-    // TODO
-    //  getters & setters
+    
+    public String getMeaning(String word) {
+        Word w = getWord(word);
+        if (w.getConfirmedStatus()) {
+            return w.getMeaning();
+        } else {
+            return w.getGuess();
+        }
+    }
+    
+    public String getRomanization(String word) {
+        return getWord(word).getRomanization();
+    }
+    
+    public BufferedImage[] getSpelling(String word) {
+        return getWord(word).getSpelling();
+    }
 }

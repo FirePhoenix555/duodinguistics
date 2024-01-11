@@ -7,8 +7,8 @@ import javax.swing.JTextField;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, world!");
-        JFrame window = new JFrame("Game");
+        // System.out.println("Hello, world!");			complementary hello world
+        JFrame window = new JFrame("baby shark doo doo doo dooo dooo dooo");
 
 		//panel
 		JPanel p = new JPanel(new BorderLayout());

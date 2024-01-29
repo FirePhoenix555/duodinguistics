@@ -13,6 +13,7 @@ public class GameHander extends JPanel implements Runnable{
     private static final long serialVersionUID = 1L;
     final int width = 800, height = 450; //may change later
 	final int fps = 30; // how often the game updates
+    private Typewriter typewriter = new Typewriter("hellaur");
 
     Thread gameThread;
 
@@ -102,6 +103,6 @@ public class GameHander extends JPanel implements Runnable{
         }
         
         g.setColor(Color.white);
-        g.drawString("hehe", 75, 75);
+        g.drawString("hehe", 75, 75); //figure out how to throw in a typewriter here
     }
 }

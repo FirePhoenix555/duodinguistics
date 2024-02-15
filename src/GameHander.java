@@ -14,6 +14,7 @@ public class GameHander extends JPanel implements Runnable{
     final int width = 800, height = 450; //may change later
 	final int fps = 30; // how often the game updates
     private Typewriter typewriter = new Typewriter("hellaur");
+    private int frameCount = 0;
 
     Thread gameThread;
 
@@ -90,7 +91,8 @@ public class GameHander extends JPanel implements Runnable{
     }
 
     private void update(){
-        //may add stuff perchance
+        if(frameCount%5 == 0) typewriter.pulse();//may add stuff perchance
+        frameCount++;
     }
 
     @Override
@@ -103,6 +105,6 @@ public class GameHander extends JPanel implements Runnable{
         }
         
         g.setColor(Color.white);
-        g.drawString("hehe", 75, 75); //figure out how to throw in a typewriter here
+        g.drawString(typewriter.getString(), 75, 75); //figure out how to throw in a typewriter here
     }
 }

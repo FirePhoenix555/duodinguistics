@@ -13,7 +13,7 @@ public class GameHander extends JPanel implements Runnable{
     private static final long serialVersionUID = 1L;
     final int width = 800, height = 450; //may change later
 	final int fps = 30; // how often the game updates
-    private Typewriter typewriter = new Typewriter("hellaur");
+    private Typewriter typewriter = new Typewriter("Congratulations! You’ve arrived on Anen Island, an island where a volcano erupted centuries ago, killing off the inhabitants. You are an Archaeologist with a special interest in linguistics, and you have arrived to study the ruins of the Anen people. You take a look around the docks you have arrived on, the ferryman who took you here already boating off back to the mainland. The island is very tropical, with palm trees swaying in a gentle breeze. Do you want to head towards the remains of a library, half-covered in sand, a house that is mostly upright, or a pier dotted with ashes and volcanic rock?");
     private int frameCount = 0;
 
     Thread gameThread;
@@ -91,7 +91,7 @@ public class GameHander extends JPanel implements Runnable{
     }
 
     private void update(){
-        if(frameCount%5 == 0) typewriter.pulse();//may add stuff perchance
+        if(frameCount%2 == 0) typewriter.pulse();//how often it pulses
         frameCount++;
     }
 

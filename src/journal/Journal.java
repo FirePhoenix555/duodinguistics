@@ -1,5 +1,8 @@
 package journal;
 
+import journal.quizzes.Quiz;
+import journal.quizzes.QuizLoader;
+
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -8,9 +11,25 @@ public class Journal {
     private final ArrayList<Word> words;
     private final Dictionary dict;
 
+    private Quiz currentQuiz = null;
+    private int quizIndex = -1;
+
     public Journal() {
         words = new ArrayList<Word>();
         dict = new Dictionary();
+    }
+
+    public boolean confirmQuizAnswer(String ans) {
+        return currentQuiz.gradeAnswer(ans);
+    }
+
+    private void advanceQuiz() {
+        quizIndex++;
+        currentQuiz = QuizLoader.load("assets/TESTquiz.json", quizIndex);
+    }
+
+    public Quiz getCurrentQuiz() {
+        return currentQuiz;
     }
 
     public void addWord(String word) {

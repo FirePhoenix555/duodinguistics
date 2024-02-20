@@ -13,10 +13,16 @@ public class Quiz {
     public boolean gradeAnswer(String ans) {
         QuizQuestion q = getCurrentQuestion();
 
-        return q.isCorrect(ans);
+        boolean correct = q.isCorrect(ans);
+
+        // todo maybe remove later in favor of advancing question manually elsewhere
+        if (correct) advanceQuestion();
+
+        return correct;
     }
 
     public QuizQuestion getCurrentQuestion() {
+        if (isFinished()) return null;
         return questions[currentQuestionIndex];
     }
 

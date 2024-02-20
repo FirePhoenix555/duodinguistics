@@ -28,6 +28,8 @@ public class QuizLoader {
             throw new RuntimeException(e);
         }
 
+        if (quizNumber >= j.size()) return null; // no new quiz
+
         JSONObject quizObject = (JSONObject) j.get(quizNumber); // get the requested quiz
         JSONArray questionArray = (JSONArray) quizObject.get("questions"); // get the questions array
 

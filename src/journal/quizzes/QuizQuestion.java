@@ -10,7 +10,7 @@ public class QuizQuestion {
         answer = new QuizAnswer(ans);
     }
 
-    protected String getQuestion() {
+    public String getQuestion() {
         return question;
     }
 

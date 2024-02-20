@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class DictionaryLoader {
 
-    private static final String wordPath = "../assets/wordlist.tsv";
+    private static final String wordPath = "assets/wordlist.tsv";
 
     protected static String[][] loadWords() throws IOException {
 

@@ -44,7 +44,7 @@ public class GameHander extends JPanel implements Runnable{
 		this.setBackground(Color.black);
 
         try {
-            font = FontLoader.loadFont("./assets/fonts/Dogtown Typewriter.ttf");
+            font = FontLoader.loadFont("assets/fonts/Dogtown Typewriter.ttf");
         } catch (Exception e) {
             e.printStackTrace();
         }

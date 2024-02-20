@@ -1,4 +1,6 @@
-public class Typewriter {
+package text;
+
+class Typewriter {
     private final String s;
     private String current;
     private int currentIndex = 0;

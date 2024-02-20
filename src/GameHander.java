@@ -17,7 +17,7 @@ public class GameHander extends JPanel implements Runnable{
     private static final long serialVersionUID = 1L;
     final int width = 800, height = 450; //may change later
 	final int fps = 30; // how often the game updates
-    private TextHandler textHandler = new TextHandler("Congratulations! You’ve arrived on Anen Island, an island where a volcano erupted centuries ago, killing off the inhabitants. You are an Archaeologist with a special interest in linguistics, and you have arrived to study the ruins of the Anen people. You take a look around the docks you have arrived on, the ferryman who took you here already boating off back to the mainland. The island is very tropical, with palm trees swaying in a gentle breeze. Do you want to head towards the remains of a library, half-covered in sand, a house that is mostly upright, or a pier dotted with ashes and volcanic rock?", 500);
+    private TextHandler textHandler = new TextHandler("Congratulations! You’ve arrived on Anen Island, an island where a volcano erupted centuries ago, killing off the inhabitants. You are an Archaeologist with a special interest in linguistics, and you have arrived to study the ruins of the Anen people. You take a look around the docks you have arrived on, the ferryman who took you here already boating off back to the mainland. The island is very tropical, with palm trees swaying in a gentle breeze. Do you want to head towards (A) the remains of a library, half-covered in sand, (B) a house that is mostly upright, or (C) a pier dotted with ashes and volcanic rock?", 650);
     private int frameCount = 0;
 
     private Journal journal = new Journal();
@@ -106,7 +106,7 @@ public class GameHander extends JPanel implements Runnable{
         super.paintComponent(g);
 
         if (font != null) {
-            Font f = font.deriveFont(14f);
+            Font f = font.deriveFont(18f);
             g.setFont(f);
         }
         
